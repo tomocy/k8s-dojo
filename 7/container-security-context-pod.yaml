@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: container-security-context
+spec:
+    containers:
+    - name: memcached
+      image: memcached
+      securityContext:
+        runAsUser: 11211
+        runAsNonRoot: true
+        readOnlyRootFilesystem: true
+        capabilities:
+            drop:
+            - SYS_ADMIN
+            - NET_ADMIN
