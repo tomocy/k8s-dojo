@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+    name: netpol
+spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+    ingress:
+    - from:
+      - namespaceSelctor:
+          matchLabels:
+            ns: dojo
+        podSelector:
+          matchLabels:
+            app: nginx
