@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: lazy
+spec:
+    containers:
+    - name: alpine
+      image: alpine
+      command: ["tail", "-f", "/dev/null"]
+      volumeMounts:
+      - name: lazy
+        mountPath: /data/lazy
+    volumes:
+    - name: lazy
+      persistentVolumeClaim:
+        claimName: lazy
+    terminationGracePeriodSeconds: 0
+

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: slow
+spec:
+    containers:
+    - name: alpine
+      image: alpine
+      command: ["tail", "-f", "/dev/null"]
+      volumeMounts:
+      - name: slow
+        mountPath: /data/slow
+    volumes:
+    - name: slow
+      persistentVolumeClaim:
+        claimName: slow
+    terminationGracePeriodSeconds: 0
