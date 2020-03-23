@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+    name: notbesteffort
+spec:
+    scopes:
+    - NotBestEffort
+    hard:
+        cpu: 500m
+        memory: 128Mi
